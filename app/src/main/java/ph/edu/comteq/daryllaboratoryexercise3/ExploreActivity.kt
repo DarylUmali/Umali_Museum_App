@@ -1,5 +1,6 @@
 package ph.edu.comteq.daryllaboratoryexercise3
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -7,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -20,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -47,7 +50,7 @@ class ExploreActivity : ComponentActivity() {
 
 @Composable
 fun ExploreScreen(modifier: Modifier = Modifier) {
-
+    val context = LocalContext.current
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -97,7 +100,12 @@ fun ExploreScreen(modifier: Modifier = Modifier) {
                     text = "Tickets",
                     color = Color.White.copy(alpha = 0.8f),
                     fontFamily = optima,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    modifier = Modifier // Make it easy to tap
+                        .clickable { // <<< TODO: NAVIGATION FOR THIS NEW TEXT
+                            val intent = Intent(context, TicketingActivity::class.java)
+                            context.startActivity(intent)
+                        }
                 )
 
                 Spacer(modifier = Modifier.width(4.dp))
