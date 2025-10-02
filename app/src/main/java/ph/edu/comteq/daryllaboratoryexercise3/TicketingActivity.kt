@@ -181,7 +181,7 @@ fun Ticketing(modifier: Modifier = Modifier) {
                         onIncrement = { generalAdmissionCount++ }
                     )
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     // Free Tickets Counter
                     TicketCounter(
