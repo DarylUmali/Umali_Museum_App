@@ -1,5 +1,6 @@
 package ph.edu.comteq.daryllaboratoryexercise3
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -36,7 +38,7 @@ class ExploreActivity : ComponentActivity() {
         setContent {
             DarylLaboratoryExercise3Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ExploreScreen(
+                    Explore(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -46,8 +48,8 @@ class ExploreActivity : ComponentActivity() {
 }
 
 @Composable
-fun ExploreScreen(modifier: Modifier = Modifier) {
-
+fun Explore(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -197,7 +199,8 @@ fun ExploreScreen(modifier: Modifier = Modifier) {
                 }
 
                 Button(
-                    onClick = { /* Handle visit gallery action */ },
+                    onClick = {  val intent = Intent(context, ArtistsActivity::class.java)
+                        context.startActivity(intent) },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFFD4AF37),
                         contentColor = Color.Black
@@ -225,6 +228,6 @@ fun ExploreScreen(modifier: Modifier = Modifier) {
 @Composable
 fun ExploreScreenPreview() {
     DarylLaboratoryExercise3Theme {
-        ExploreScreen()
+        Explore()
     }
 }
