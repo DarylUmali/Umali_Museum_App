@@ -91,7 +91,7 @@ data class ArtistData(
     val name: String,
     val years: String,
     val profileImage: Int,
-    val artworks: List<Artwork>
+    val artworks: List<Artwork> 
 )
 
 

@@ -82,7 +82,7 @@ fun Exhibit(context: Context) {
             items(artworks) { artwork ->
                 ArtworkCard(artwork)
             }
-        }
+        } 
     }
 }
 
